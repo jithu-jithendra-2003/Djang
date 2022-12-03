@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/css/table.css">
+    <link rel="stylesheet" href="/static/css/star.css">
+    <title>Book a Car</title>
+</head>
+<body>
+<section class="sub-header">
+            <nav>
+                <a href="http://127.0.0.1:8000/home/"><img src="/static/images/logo.jpg"></a>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="http://127.0.0.1:8000/home/">HOME</a></li>
+                        <li><a href="http://127.0.0.1:8000/cardetail/">CARS</a></li>
+                        <li><a href="http://127.0.0.1:8000/booking/">BOOKING</a></li>
+                        <li><a href="http://127.0.0.1:8000/feedback/">FEEDBACK</a></li>
+                        <li><a href="http://127.0.0.1:8000/contact/">CONTACT</a></li>
+                        <li><a href="http://127.0.0.1:8000/about/">ABOUT</a></li>
+                        <li><a href="http://127.0.0.1:8000/mainhome/">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </nav>
+</section>
+
+
+ <form action="{% url 'getfeedback' %}"  method="POST" id="feedback">
+      {% csrf_token %}
+<div class="container">
+           <div class="container-form">
+                    <h2 class="heading heading-yellow">Feedback Form</h2>
+               <div class="center">
+      <div class="stars">
+        <input type="radio" id="five" name="rate" value="5">
+        <label for="five"></label>
+        <input type="radio" id="four" name="rate" value="4">
+        <label for="four"></label>
+        <input type="radio" id="three" name="rate" value="3">
+        <label for="three"></label>
+        <input type="radio" id="two" name="rate" value="2">
+        <label for="two"></label>
+        <input type="radio" id="one" name="rate" value="1">
+        <label for="one"></label>
+        <span class="result"></span>
+      </div>
+   </div>
+
+                        <div class="col-6 form-group">
+                                <input type="text" name="username"   class="form-control p-4" placeholder="User Name" required="required">
+                            </div>
+
+                        <div class="form-fields">
+                        <p>Car</p>
+                        <select name="car" id="*">
+                            <option value="Toofan">Toofan</option>
+                            <option value="Baleno">Baleno</option>
+                            <option value="Mahindra-XUV-500">Mahindra-XUV-500</option>
+                            <option value="Swift">Swift</option>
+                            <option value="Toyoto-Innova">Toyoto-Innova</option>
+                            <option value="Grand I20">Grand I20</option>
+                            <option value="Tata-Tiago">Tata-Tiago</option>
+                            <option value="Tata-Bolt">Tata-Bolt</option>
+                            <option value="Tata-Nano">Tata-Nano</option>
+                        </select>
+                    </div>
+
+
+                   <div class="form-group">
+                            <textarea class="form-control py-3 px-4" rows="3" name="feedback"  placeholder="Please provide your feedback " required="required"></textarea>
+                        </div>
+               <button class ="btn">Submit</button>
+            </div>
+        </div>
+     </form>
+
+</body>
+</html>

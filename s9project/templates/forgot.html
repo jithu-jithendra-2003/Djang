@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Forgot</title>
+</head>
+<body>
+
+ <form action="a" method="POST" id="details">
+      {% csrf_token %}
+<div class="container">
+           <div class="container-form">
+                    <h2 class="heading heading-yellow">Booking Detail</h2>
+                       <div class="form-fields">
+                        <p>User Name</p>
+                         <input type="text" class="input-field" placeholder="User name" name="user" required>
+                    </div>
+
+                     <div class="form-fields">
+                        <p>Enter Password</p>
+                         <input type="password" class="input-field" placeholder="Password" name="passwo" required>
+                    </div>
+
+
+                    <div class="form-fields">
+                        <p>Re-Enter password</p>
+                         <input type="password" class="input-field" placeholder="Password" name="passwo" required>
+
+                    </div>
+                    <button class ="btn">Submit</button>
+            </div>
+        </div>
+     </form>
+
+</body>
+</html>

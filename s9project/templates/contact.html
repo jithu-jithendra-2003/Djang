@@ -16,6 +16,7 @@
                          <li><a href="http://127.0.0.1:8000/home/">HOME</a></li>
                         <li><a href="http://127.0.0.1:8000/cardetail/">CARS</a></li>
                         <li><a href="http://127.0.0.1:8000/booking/">BOOKING</a></li>
+                         <li><a href="http://127.0.0.1:8000/feedback/">Feedback</a></li>
                         <li><a href="http://127.0.0.1:8000/contact/">CONTACT</a></li>
                         <li><a href="http://127.0.0.1:8000/about/">ABOUT</a></li>
                         <li><a href="http://127.0.0.1:8000/mainhome/">LOGOUT</a></li>
@@ -42,29 +43,30 @@
 
             </div>
             <div class="container-form">
-                <form action="a">
-                    <h2 class="heading heading-yellow">Reservation Online</h2>
+                 <form action="{% url 'getcontact' %}" method="POST" id="details">
+                        {% csrf_token %}
+                    <h2 class="heading heading-yellow">Contact</h2>
 
                     <div class="form-fields">
                         <p>Your Name</p>
-                        <input type="text" placeholder="Your Name">
+                        <input type="text" placeholder="Your Name" name="name">
                     </div>
                     <div class="form-fields">
                         <p>Your E-mail</p>
-                        <input type="email" placeholder="Your E-mail">
+                        <input type="email" placeholder="Your E-mail" name="email">
                     </div>
                     <div class="form-fields">
                         <p>Issue</p>
-                        <textarea placeholder="Enter Your Issue"></textarea>
+                        <textarea placeholder="Enter Your Issue" name="issue"></textarea>
                     </div>
 
                     <div class="form-fields">
                         <p>Location</p>
-                        <select name="select" id="#">
-                            <option value="1">select location</option>
-                            <option value="2">Hyderabad</option>
-                            <option value="3">Vijayawada</option>
-                            <option value="4">Vishakhapatnam</option>
+                        <select name="location" id="#">
+                            <option value="Chennai">Chennai</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Vijayawada">Vijayawada</option>
+                            <option value="Vishakhapatnam">Vishakhapatnam</option>
                         </select>
                     </div>
 

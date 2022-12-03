@@ -15,6 +15,7 @@
                         <li><a href="http://127.0.0.1:8000/home/">HOME</a></li>
                         <li><a href="http://127.0.0.1:8000/cardetail/">CARS</a></li>
                         <li><a href="http://127.0.0.1:8000/booking/">BOOKING</a></li>
+                        <li><a href="http://127.0.0.1:8000/feedback/">Feedback</a></li>
                         <li><a href="http://127.0.0.1:8000/contact/">CONTACT</a></li>
                         <li><a href="http://127.0.0.1:8000/about/">ABOUT</a></li>
                         <li><a href="http://127.0.0.1:8000/mainhome/">LOGOUT</a></li>
@@ -24,62 +25,65 @@
 </section>
 
 
-
+ <form action="{% url 'getdetails' %}" action="{% url 'email' %}"   method="POST" id="details">
+      {% csrf_token %}
 <div class="container">
+
+
             <div class="container-time">
-                <h2 class="heading">Personal Details</h2>
+                <h2 class="heading">Person Details</h2>
                 <div class="row">
                             <div class="col-6 form-group">
-                                <input type="text" class="form-control p-4" placeholder="First Name" required="required">
+                                <input type="text" name="Fname"   class="form-control p-4" placeholder="First Name" required="required">
                             </div><br>
                     <br>
                             <div class="col-6 form-group">
-                                <input type="text" class="form-control p-4" placeholder="Last Name" required="required">
+                                <input type="text" class="form-control p-4" placeholder="Last Name" required="required" name="Lname">
                             </div><br><br>
                         </div>
                         <div class="row">
                             <div class="col-6 form-group">
-                                <input type="email" class="form-control p-4" placeholder="Your Email" required="required">
+                                <input type="email" class="form-control p-4" placeholder="Your Email" required="required" name="email">
                             </div><br><br>
                             <div class="col-6 form-group">
-                                <input type="number" class="form-control p-4" placeholder="Mobile Number" required="required">
+                                <input type="number" class="form-control p-4" placeholder="Mobile Number" maxlength="10" required="required" name="phno">
                             </div><br><br>
                         </div>
                     </div>
 
            <div class="container-form">
-                <form action="a">
                     <h2 class="heading heading-yellow">Booking Detail</h2>
-
                        <div class="form-fields">
                         <p>Pick-up Location</p>
-                        <select name="select" id="#">
-                            <option value="1">select location</option>
-                            <option value="2">Hyderabad</option>
-                            <option value="3">Vijayawada</option>
-                            <option value="4">Vishakhapatnam</option>
+                        <select name="pick" id="#">
+                            <option value="Chennai">Chennai</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Vijayawada">Vijayawada</option>
+                            <option value="Vishakhapatnam">Vishakhapatnam</option>
                         </select>
                     </div>
 
                      <div class="form-fields">
                         <p>Drop Location</p>
-                        <select name="select" id="$">
-                            <option value="1">select location</option>
-                            <option value="2">Hyderabad</option>
-                            <option value="3">Vijayawada</option>
-                            <option value="4">Vishakhapatnam</option>
+                        <select name="drop" id="$">
+                            <option value="Chennai">Chennai</option>
+                            <option value="Hyderabad">Hyderabad</option>
+                            <option value="Vijayawada">Vijayawada</option>
+                            <option value="Vishakapatanam">Vishakhapatnam</option>
                         </select>
                     </div>
 
 
                     <div class="form-fields">
                         <p>Pick-Up Date & Time</p>
-                        <input type="datetime-local">
+                        <input type="date" name="date">
+                        <input type="time" name="time">
+
                     </div>
 
                      <div class="form-fields">
                         <p>Adults</p>
-                        <select name="select" id="!">
+                        <select name="adult" id="!">
                             <option value="1">1-adult</option>
                             <option value="2">2-adult</option>
                             <option value="3">3-adult</option>
@@ -89,7 +93,7 @@
 
                      <div class="form-fields">
                         <p>Child</p>
-                        <select name="select" id="@">
+                        <select name="child" id="@">
                             <option value="1">1-Child</option>
                             <option value="2">2-Child</option>
                             <option value="3">3-Child</option>
@@ -104,7 +108,7 @@
 
                     <div class="form-fields">
                         <p>Car</p>
-                        <select name="select" id="*">
+                        <select name="car" id="*">
                             <option value="1">Toofan</option>
                             <option value="2">Baleno</option>
                             <option value="3">Mahindra-XUV-500</option>
@@ -117,33 +121,19 @@
                         </select>
                     </div>
 
-
-
-
                     <div class="form-fields">
                         <p>Payment</p>
                             <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="paypal">
-                                <label class="custom-control-label" for="paypal">Paypal</label>
+                                <input type="radio" class="custom-control-input" name="payment" id="paypal" required>
+                                <label class="custom-control-label" for="paypal">razorpay</label>
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="directcheck">
-                                <label class="custom-control-label" for="directcheck">Direct Check</label>
-                            </div>
-                        </div>
-                        <div class="form-group mb-4">
-                            <div class="custom-control custom-radio">
-                                <input type="radio" class="custom-control-input" name="payment" id="banktransfer">
-                                <label class="custom-control-label" for="banktransfer">Bank Transfer</label>
-                            </div>
-                        </div>
 
-                    <button class ="btn">Reserve Now</button>
-                </form>
+
+                    <button class ="btn"><a href="https://rzp.io/l/VCL5Lr8">Reserve Now</a></button>
             </div>
         </div>
+    </div>
+     </form>
 
 </body>
 </html>

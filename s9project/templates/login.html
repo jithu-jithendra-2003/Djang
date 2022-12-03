@@ -19,11 +19,11 @@
                     <img src="/static/images/3.jpg">
                     <img src="/static/images/4.jpg">
                 </div>
-                <form id="login" action="http://127.0.0.1:8000/home/" class="input-group" method="POST">
+                <form id="login" action="{% url 'checkuser' %}" class="input-group" method="POST" >
                     {% csrf_token %}
-                    <input type="text" class="input-field" placeholder="User name" required>
-                    <input type="password" class="input-field" placeholder="Password" required>
-                    <input type="checkbox" class="check-box"><span>Remember password</span><br>
+                    <input type="text" class="input-field" placeholder="User name" name="user" required>
+                    <input type="password" class="input-field" placeholder="Password" name="passwo" required>
+                    <a href="http://127.0.0.1:8000/forgot/" ><span>Forgot Password</span></a>
                     <a href="http://127.0.0.1:8000/error/" ><h3>ndhdjjskjs</h3></a>
                     <button type="submit" class="submit-btn" onclick="http://127.0.0.1:8000/home/" value="submit">Log In</button>
                 </form>
@@ -37,10 +37,11 @@ a:link {
   text-decoration: none;
 }
     </style>
-                <form id="register" class="input-group" method="POST">
+                <form id="register" class="input-group" method="POST" action="{% url 'getres' %}">
                     {% csrf_token %}
                     <input type="text" name="user_name" class="input-field" placeholder="User name" required>
-                    <input type="password" name="pswd" class="input-field" placeholder="Password" required>
+                    <input type="email" name="email" class="input-field" placeholder="email-id" required>
+                    <input type="password" name="passwo" class="input-field" placeholder="Password" required>
                     <input type="checkbox" class="check-box"><span>I agree to the terms and conditions</span>
                     <button type="submit" class="submit-btn" onclick="login()" value="submit">Register</button>
                 </form>

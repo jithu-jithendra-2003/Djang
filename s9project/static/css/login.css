@@ -48,13 +48,13 @@ nav img{
 }
 .form-box{
     width: 380px;
-    height: 480px;
+    height: 650px;
     position: relative;
     margin: 6% auto;
     background: white;
     padding: 5px;
     overflow: hidden;
-}
+    }
 .button-box{
     width: 220px;
     position: relative;
