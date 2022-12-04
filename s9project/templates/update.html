@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="/static/css/table.css">
+    <link rel="stylesheet" href="/static/css/star.css">
+    <title>Book a Car</title>
+</head>
+<body>
+<section class="sub-header">
+            <nav>
+                <a href="http://127.0.0.1:8000/home/"><img src="/static/images/logo.jpg"></a>
+                <div class="nav-links">
+                    <ul>
+                        <li><a href="http://127.0.0.1:8000/home/">HOME</a></li>
+                        <li><a href="http://127.0.0.1:8000/cardetail/">CARS</a></li>
+                        <li><a href="http://127.0.0.1:8000/booking/">BOOKING</a></li>
+                        <li><a href="http://127.0.0.1:8000/feedback/">FEEDBACK</a></li>
+                        <li><a href="http://127.0.0.1:8000/contact/">CONTACT</a></li>
+                        <li><a href="http://127.0.0.1:8000/about/">ABOUT</a></li>
+                        <li><a href="http://127.0.0.1:8000/mainhome/">LOGOUT</a></li>
+                    </ul>
+                </div>
+            </nav>
+</section>
+
+
+ <form action="{% url 'getupdate' %}"  method="POST" id="feedback">
+      {% csrf_token %}
+<div class="container">
+           <div class="container-form">
+                    <h2 class="heading heading-yellow">Update Profile</h2>
+                        <div class="col-6 form-group">
+                                <input type="text" name="user"   class="form-control p-4" placeholder="User Name" required="required">
+                        </div><br><br>
+                        <div class="col-6 form-group">
+                                <input type="email" name="email"   class="form-control p-4" placeholder="email" >
+                        </div><br><br>
+                        <div class="col-6 form-group">
+                                <input type="password" name="passwo"   class="form-control p-4" placeholder="password" >
+                        </div><br><br>
+
+               <button class ="btn">Update</button>
+            </div>
+        </div>
+     </form>
+
+</body>
+</html>

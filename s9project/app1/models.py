@@ -13,3 +13,7 @@ class Details(models.Model):
 class Area(models.Model):
     pincode = models.CharField(validators = [MinLengthValidator(6), MaxLengthValidator(6)],max_length = 6,unique=True)
     city = models.CharField(max_length = 20)
+
+class Members(models.Model):
+  firstname = models.CharField(max_length=255)
+  lastname = models.CharField(max_length=255)

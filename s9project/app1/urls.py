@@ -18,5 +18,6 @@ urlpatterns = [
         path('getcontact/',views.getcontact,name="getcontact"),
         path('email/',views.email,name="email"),
         path('getfeedback/',views.getfeedback,name="getfeedback"),
+        path('update/',views.update,name="update"),
 
   ]

@@ -1,7 +1,14 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
+from django.template import loader
+from django.urls import reverse
 from pymongo import MongoClient
+from django.shortcuts import render, redirect
+from django.contrib.auth.models import User
+from django.contrib.auth import login, authenticate, logout
+from django.conf import settings
 from django.core.mail import send_mail
+from .models import Members
+
 client=MongoClient("mongodb://127.0.0.1:27017/")
 
 db=client["SDP"]
@@ -40,8 +47,14 @@ def getres(request):
         user=request.POST.get('user_name')
         passwo=request.POST.get('passwo')
         db.login.insert_one({'email':email,'user':user,'passwo':passwo})
+        subject = 'welcome to Kings Car Rentals'
+        message = f'Hi {user}, thank you for registering in Kings Car Rental.\n Have a good experience with Kings Car Rental'
+        email_from = settings.EMAIL_HOST_USER
+        recipient_list = [email]
+        send_mail(subject, message, email_from, recipient_list)
         return render(request,"login.html")
     return render(request,"login.html")
+
 
 def checkuser(request):
     if request.method=='POST':
@@ -72,7 +85,6 @@ def getdetails(request):
         email=request.POST.get('email')
         phno=request.POST.get('phno')
         db.detail.insert_one({'Fname':Fname,'Lname':Lname,'email':email,'phno':phno})
-        razor = request.POST.get('payment')
         return render(request,"booking.html")
     return render(request,"booking.html")
 
@@ -107,3 +119,18 @@ def email(request):
         ['geethu240434@gmail.com'],
         fail_silently = False,
     )
+def update(request):
+    return render(request,'update.html')
+
+'''def getupdate(request):
+    if request.method=='POST':
+        user = request.POST.get('user')
+        email=request.POST.get('email')
+        passwo = request.POST.get('passwo')
+        c = db.login.find_one({'user': user})
+        if c['user'] == user and passwo is not None:
+            c['passwo']='passwo'
+
+        if c['user'] == user and c['email'] is not None:
+            c['email'] = 'email'
+    return render(request, "update.html")'''
